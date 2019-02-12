@@ -7,12 +7,14 @@ import { AuthComponent } from './auth/auth.component';
 import { ParametreComponent } from './parametre/parametre.component';
 import { PresentationComponent } from './presentation/presentation.component';
 import {RouterModule, Routes} from '@angular/router';
+import { AuthService } from 'src/services/auth.service';
 
 const appRoutes: Routes = [
   { path: 'accueil', component: AcceuilComponent},
   { path: '', component: PresentationComponent},
   { path: 'settings', component: ParametreComponent},
   { path: 'authentification', component: AuthComponent},
+  { path: "authentification", component: AuthComponent},
 
 ]
 
@@ -28,7 +30,9 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
