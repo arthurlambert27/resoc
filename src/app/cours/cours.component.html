@@ -1,4 +1,10 @@
 <li class="list-group-item">
-  <h4>Titre: {{TitreCours}}</h4>
+  <div
+    style="width:20px;height:20px;background-color:red;"
+    *ngIf="coursStatus ==='En cours' "></div>
+  <div
+    style="width:20px;height:20px;background-color:rgb(55, 252, 88);"
+    *ngIf="coursStatus ==='on' "></div>
+    <h4>Titre: {{coursTitre}}</h4>
   <h6>Status: {{coursStatus}}</h6>
 </li>

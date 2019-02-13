@@ -9,6 +9,7 @@ import { PresentationComponent } from './presentation/presentation.component';
 import {RouterModule, Routes} from '@angular/router';
 import { AuthService } from 'src/services/auth.service';
 import { CoursComponent } from './cours/cours.component';
+import { ListeCoursComponent } from './liste-cours/liste-cours.component';
 
 const appRoutes: Routes = [
   { path: 'accueil', component: AcceuilComponent},
@@ -16,7 +17,7 @@ const appRoutes: Routes = [
   { path: 'settings', component: ParametreComponent},
   { path: 'authentification', component: AuthComponent},
   { path: "authentification", component: AuthComponent},
-  { path: "cours", component: CoursComponent}
+  { path: "cours", component: ListeCoursComponent}
 
 ]
 
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     AuthComponent,
     ParametreComponent,
     PresentationComponent,
-    CoursComponent
+    CoursComponent,
+    ListeCoursComponent
   ],
   imports: [
     BrowserModule,

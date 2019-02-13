@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Liste des cours</h2>
+      <ul class="list-group">
+        <app-cours *ngFor="let cours of liste_cours"
+          [coursTitre]="cours.titre"
+          [coursStatus]="cours.status"></app-cours>
+        
+      </ul>
+    </div>
+  </div>
+</div>
