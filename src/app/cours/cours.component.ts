@@ -16,4 +16,13 @@ export class CoursComponent implements OnInit {
   ngOnInit() {
   }
 
+  getColor(){
+    if(this.coursStatus === "on"){
+      return 'green';
+    }
+    else if(this.coursStatus ==="En cours"){
+      return "red";
+    }
+  }
+
 }

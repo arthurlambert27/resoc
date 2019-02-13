@@ -1,10 +1,12 @@
-<li class="list-group-item">
+<li [ngClass]="{'list-group-item': true,
+ 'list-group-item-success': coursStatus==='on',
+  'list-group-item-danger': coursStatus==='En cours'}">
   <div
     style="width:20px;height:20px;background-color:red;"
     *ngIf="coursStatus ==='En cours' "></div>
   <div
     style="width:20px;height:20px;background-color:rgb(55, 252, 88);"
     *ngIf="coursStatus ==='on' "></div>
-    <h4>Titre: {{coursTitre}}</h4>
+    <h4 [ngStyle]="{color: getColor()}">Titre: {{coursTitre}}</h4>
   <h6>Status: {{coursStatus}}</h6>
 </li>
