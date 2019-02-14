@@ -9,6 +9,7 @@ export class CoursComponent implements OnInit {
 
   @Input() coursTitre: string;
   @Input() coursStatus: string;
+  @Input() coursContenu: any[];
   constructor() { 
     
   }
@@ -23,6 +24,15 @@ export class CoursComponent implements OnInit {
     else if(this.coursStatus ==="En cours"){
       return "red";
     }
+  }
+  color(truc){
+    if (truc ==='titre'){
+      return 'red';
+    }
+    else{
+      return 'black';
+    }
+    
   }
 
 }

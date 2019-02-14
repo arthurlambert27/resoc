@@ -7,6 +7,10 @@
   <div
     style="width:20px;height:20px;background-color:rgb(55, 252, 88);"
     *ngIf="coursStatus ==='on' "></div>
-    <h4 [ngStyle]="{color: getColor()}">Titre: {{coursTitre}}</h4>
+    <h1 [ngStyle]="{color: getColor()}">Titre: {{coursTitre}}</h1>
+    <div *ngFor="let contenu of coursContenu" [ngClass]="{
+      'h3 red': contenu.class === 'titre'}" [ngStyle]="{color: color(contenu.class)}">
+      {{contenu.text}}
+    </div>
   <h6>Status: {{coursStatus}}</h6>
 </li>

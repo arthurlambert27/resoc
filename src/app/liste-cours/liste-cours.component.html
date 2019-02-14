@@ -5,7 +5,10 @@
       <ul class="list-group">
         <app-cours *ngFor="let cours of liste_cours"
           [coursTitre]="cours.titre"
-          [coursStatus]="cours.status"></app-cours>
+          [coursStatus]="cours.status"
+          [coursContenu]="cours.contenu"></app-cours>
+
+          
         
       </ul>
     </div>
