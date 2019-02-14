@@ -10,7 +10,12 @@
     <h1 [ngStyle]="{color: getColor()}">Titre: {{coursTitre}}</h1>
     <div *ngFor="let contenu of coursContenu" [ngClass]="{
       'h3 red': contenu.class === 'titre'}" [ngStyle]="{color: color(contenu.class)}">
-      {{contenu.text}}
+      <div *ngIf="contenu.class !== 'image'">
+          {{contenu.text}}
+      </div>
+      <div *ngIf="contenu.class ==='image'">
+        <img [src]="contenu.lien" style="width:300px;height:200px;"alt="">
+      </div>
     </div>
   <h6>Status: {{coursStatus}}</h6>
 </li>

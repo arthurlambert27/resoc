@@ -10,7 +10,7 @@ import {RouterModule, Routes} from '@angular/router';
 import { AuthService } from 'src/services/auth.service';
 import { CoursComponent } from './cours/cours.component';
 import { ListeCoursComponent } from './liste-cours/liste-cours.component';
-
+import { CoursService } from "src/services/cours.service";
 const appRoutes: Routes = [
   { path: 'accueil', component: AcceuilComponent},
   { path: '', component: PresentationComponent},
@@ -36,7 +36,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    AuthService
+    AuthService,
+    CoursService
   ],
   bootstrap: [AppComponent]
 })
