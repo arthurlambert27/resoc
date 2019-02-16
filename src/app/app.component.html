@@ -1,23 +1,34 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" routerLink="presentation">Resoc!</a>
+<div class="bordure border">
+<div class="container">
+<nav class="navbar navbar-expand-lg navbar-light ">
+    <a class="navbar-brand" routerLink="presentation"><h3>Resoc</h3></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li routerLinkActive="active" class="nav-item">
-          <a class="nav-link" routerLink="accueil">Accueil</a>
+          <a class="nav-link" routerLink="accueil"><h3>Accueil</h3></a>
         </li>
-        <li routerLinkActive="active" class="nav-item">
-          <a class="nav-link" routerLink="cours">Tout les cours</a>
+        <li routerLinkActive="active" class="nav-item test">
+          <a class="nav-link" routerLink="cours"><h3>Tout les cours</h3></a>
         </li>
       </ul>
-      <span class="navbar-text">
-          <a class="nav-link" routerLink="authentification">Se connecter</a>
-        <a class="nav-link" routerLink="settings">Parametre</a>
-      </span>
-    </div>
+      
+      
+      
+          <div>
+              
+            <a class="nav-link" routerLink="authentification"> 
+              <h3>Se connecter</h3></a>
+          </div>
+          
+        </div>
+      
+        
 </nav>
+</div>
+</div>
   
 
 <router-outlet></router-outlet>
