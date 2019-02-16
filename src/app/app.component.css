@@ -2,9 +2,23 @@ h3 {
     color: #1865F2;
     font-size: 1.4em;
     
+    
+}
+h2{
+    color: #1865F2;
+    font-size: 1.4em; 
+    font-family: myFirstFont, sans-serif;
 }
 
 .bordure {
     box-shadow: 0px 1px 1px grey;
 
 }
+
+.active h3{
+    
+    border-bottom: 3px solid #FF8C00;
+    border-radius: 3px ;
+    
+}
+
