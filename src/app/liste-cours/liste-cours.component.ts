@@ -20,4 +20,12 @@ liste_cours: any[]
     this.liste_cours = this.coursService.liste_cours;
   }
 
+  onSave(){
+    this.coursService.saveCoursToServer();
+  }
+
+  onFetch(){
+  	this.coursService.getCoursFromServer();
+  }
+
 }
