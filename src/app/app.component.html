@@ -19,7 +19,11 @@
       
           <div>
               
-           <a class="nav-link" routerLinkActive="active" routerLink="signup"><h3>Créer un compte</h3></a>
+           <a class="nav-link" routerLinkActive="active" routerLink="signup" *ngIf="!isAuth"><h3>Créer un compte</h3></a>
+           <a class="nav-link" routerLinkActive="active" routerLink="signin" *ngIf="!isAuth"><h3>Se connecter</h3></a>
+           <a (click)="onSignOut()"
+           style="cursor:pointer"
+           *ngIf="isAuth"><h3>Déconnexion</h3></a>
           </div>
           
         </div>

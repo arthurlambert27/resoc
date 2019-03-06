@@ -2,6 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 
+// Firebase modules
+
+import { environment } from '../environments/environment';
+import * as firebase from 'firebase/app';
+
+
+
+
+
 import { AppComponent } from './app.component';
 import { AcceuilComponent } from './composants/acceuil/acceuil.component';
 import { ParametreComponent } from './parametre/parametre.component';
@@ -15,13 +24,15 @@ import { HttpClientModule } from "@angular/common/http";
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 
+firebase.initializeApp(environment.firebaseConfig);
 
 const appRoutes: Routes = [
   { path: 'accueil', component: AcceuilComponent},
   { path: '', component: PresentationComponent},
   { path: 'settings', component: ParametreComponent},
   { path: "cours", component: ListeCoursComponent},
-  { path: "signup", component: SignupComponent}
+  { path: "signup", component: SignupComponent},
+  { path: "signin", component: SigninComponent}
   
 
 ]
@@ -41,7 +52,8 @@ const appRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ],
   providers: [
     AuthService,
