@@ -14,21 +14,7 @@ export class AppComponent {
   isAuth: boolean;
 
   constructor(private authService: AuthService) { }
-
   ngOnInit() {
-    firebase.auth().onAuthStateChanged(
-      (user) => {
-        if(user) {
-          this.isAuth = true;
-        } else {
-          this.isAuth = false;
-        }
-      }
-    );
+    
   }
-
-  onSignOut() {
-    this.authService.signOutUser();
-  }
-
 }

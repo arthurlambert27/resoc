@@ -19,11 +19,14 @@
       
           <div>
               
-           <a class="nav-link" routerLinkActive="active" routerLink="signup" *ngIf="!isAuth"><h3>Créer un compte</h3></a>
-           <a class="nav-link" routerLinkActive="active" routerLink="signin" *ngIf="!isAuth"><h3>Se connecter</h3></a>
-           <a (click)="onSignOut()"
+           <a class="nav-link" routerLinkActive="active" routerLink="signup" *ngIf="!authService.userData"><h3>Créer un compte</h3></a>
+           <a class="nav-link" routerLinkActive="active" routerLink="signin" *ngIf="!authService.userData"><h3>Se connecter</h3></a>
+           <a (click)="authService.SignOut()"
            style="cursor:pointer"
-           *ngIf="isAuth"><h3>Déconnexion</h3></a>
+           *ngIf="authService.userData"><h3>Déconnexion</h3></a>
+
+           <a routerLink="parametre"
+           *ngIf="authService.userData"><h3>Parametre</h3></a>
           </div>
           
         </div>
@@ -35,3 +38,7 @@
   
 
 <router-outlet></router-outlet>
+
+
+
+

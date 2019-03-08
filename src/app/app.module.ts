@@ -7,6 +7,10 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } 
 import { environment } from '../environments/environment';
 import * as firebase from 'firebase/app';
 
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 
 
 
@@ -23,6 +27,8 @@ import { CoursService } from "src/services/cours.service";
 import { HttpClientModule } from "@angular/common/http";
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -30,9 +36,13 @@ const appRoutes: Routes = [
   { path: 'accueil', component: AcceuilComponent},
   { path: '', component: PresentationComponent},
   { path: 'settings', component: ParametreComponent},
+  { path: 'parametre', component: ParametreComponent},
   { path: "cours", component: ListeCoursComponent},
+  { path: 'dashboard', component: ListeCoursComponent },
   { path: "signup", component: SignupComponent},
-  { path: "signin", component: SigninComponent}
+  { path: "signin", component: SigninComponent},
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'verify-email-address', component: VerifyEmailComponent }
   
 
 ]
@@ -46,13 +56,18 @@ const appRoutes: Routes = [
     CoursComponent,
     ListeCoursComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
     
   ],
   providers: [
