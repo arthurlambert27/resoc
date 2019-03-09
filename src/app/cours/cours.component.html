@@ -1,21 +1,36 @@
-<li [ngClass]="{'list-group-item': true,
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <li [ngClass]="{'list-group-item': true,
  'list-group-item-success': coursStatus==='on',
   'list-group-item-danger': coursStatus==='En cours'}">
-  <div
-    style="width:20px;height:20px;background-color:red;"
-    *ngIf="coursStatus ==='En cours' "></div>
-  <div
-    style="width:20px;height:20px;background-color:rgb(55, 252, 88);"
-    *ngIf="coursStatus ==='on' "></div>
-    <h1 [ngStyle]="{color: getColor()}">Titre: {{coursTitre}}</h1>
-    <div *ngFor="let contenu of coursContenu" [ngClass]="{
+        <div style="width:20px;height:20px;background-color:red;" *ngIf="coursStatus ==='En cours' "></div>
+        <div style="width:20px;height:20px;background-color:rgb(55, 252, 88);" *ngIf="coursStatus ==='on' "></div>
+        <h1 [ngStyle]="{color: getColor()}">Titre: {{coursTitre}}</h1>
+        <div *ngFor="let contenu of coursContenu" [ngClass]="{
       'h3 red': contenu.class === 'titre'}" [ngStyle]="{color: color(contenu.class)}">
-      <div *ngIf="contenu.class !== 'image' && coursStatus==='on'">
-        {{contenu.text}}
+          <div *ngIf="contenu.class !== 'image' && coursStatus==='on'">
+            {{contenu.text}}
+          </div>
+          <div *ngIf="contenu.class ==='image'">
+            <img [src]="contenu.lien" style="width:300px;height:200px;" alt="">
+          </div>
+        </div>
+        <h6>Status: {{coursStatus}}</h6>
+      </li>
     </div>
-      <div *ngIf="contenu.class ==='image'">
-        <img [src]="contenu.lien" style="width:300px;height:200px;"alt="">
-      </div>
+    <div class="col-sm-3" [ngClass]="{'list-group-item': true,
+    'list-group-item-success': coursStatus==='on',
+     'list-group-item-danger': coursStatus==='En cours'}">
+      <h3>Forum:</h3>
+        <div *ngFor="let sujet of coursForum">
+          <a (click)="displayForumChat(sujet)">{{sujet.titre}}</a>
+          <div *ngIf="sujet.click">
+            <div  *ngFor="let message of sujet.chat">
+              <p > <span style="font-weight:bold">{{message.auteur}}</span>: {{message.message}}</p>
+            </div>
+          </div>
+        </div>
     </div>
-  <h6>Status: {{coursStatus}}</h6>
-</li>
+  </div>
+</div>

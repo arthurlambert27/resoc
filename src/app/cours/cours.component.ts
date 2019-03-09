@@ -10,13 +10,22 @@ export class CoursComponent implements OnInit {
   @Input() coursTitre: string;
   @Input() coursStatus: string;
   @Input() coursContenu: any[];
+  @Input() coursForum: any[];
   constructor() { 
     
   }
 
   ngOnInit() {
   }
-
+  displayForumChat(sujet){
+    if (sujet.click){
+      sujet.click = false;
+    }
+    else{
+      sujet.click = true;
+      }
+    
+  }
   getColor(){
     if(this.coursStatus === "on"){
       return 'green';
