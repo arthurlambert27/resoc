@@ -29,6 +29,15 @@
             <div  *ngFor="let message of sujet.chat">
               <p > <span style="font-weight:bold">{{message.auteur}}</span>: {{message.message}}</p>
             </div>
+
+            
+            <div>
+                
+                <input  [formControl]="message" type="text" class="form-control"  placeholder="Ecrivez votre message ici">
+                <button class="btn-primary"(click)="envoitMessage(sujet)">Envoyer</button>
+              
+              
+            </div>
           </div>
         </div>
     </div>
