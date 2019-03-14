@@ -1,45 +1,54 @@
 <div class="displayTable">
-  <div class="displayTableCell">
+    <div class="displayTableCell">
+  
+      <div class="container groupe">
+  
+        <h3>Création de compte</h3>
+        <div class="form-group">
+          <label>Adresse email:</label>
+          <input type="text" class="form-control" placeholder="Entrez votre addresse email" #userEmail required>
+          <small class="form-text text-muted">
+            
+              Votre addresse email reste confidentielle
+            
+          </small>
+        </div>
+        <div class="form-group">
+          <label>Mot de passe:</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" #userPwd required
+            required>
+            <small class="form-text text-muted">
+                Utiliser un gestionnaire de mot de passe est utile pour ne pas les oublier! 
+                
+              </small>
+        </div>
+        
+        
+  
+            <!-- Calling SignIn Api from AuthService -->
+            <input type="button" class="btn btn-primary" value="Créer mon compte"
+            (click)="authService.SignUp(userEmail.value, userPwd.value)">
+            Ou
+      
+            <!-- Calling GoogleAuth Api from AuthService -->
+            
+            
+              <button type="button" class="btn btn-danger" (click)="authService.GoogleAuth()">
+                Créer mon compte avec Google
+              </button>
+            
+              
+  
+  
+  
+          </div>
 
-    <div class="authBlock">
-      <h3>Sign Up</h3>
 
-      <div class="formGroup">
-        <input type="email" class="formControl" placeholder="Email Address" #userEmail required>
-      </div>
 
-      <div class="formGroup">
-        <input type="password" class="formControl" placeholder="Password" #userPwd required>
-      </div>
 
-      <div class="formGroup">
-        <input type="button" class="btn btnPrimary" value="Sign Up" (click)="authService.SignUp(userEmail.value, userPwd.value)">
-      </div>
 
-      <div class="formGroup">
-        <span class="or"><span class="orInner">Or</span></span>
-      </div>
 
-      <!-- Continue with Google -->
-      <div class="formGroup">
-        <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
-          <i class="fab fa-google-plus-g"></i>
-          Continue with Google
-        </button>
-      </div>
 
-      <!-- Continue with Facebook -->
-      <div class="formGroup">
-        <button type="button" class="btn facebookBtn" (click)="authService.FacebookAuth()">
-          <i class="fab fa-facebook"></i>
-          Continue with Facebook
-        </button>
-      </div>
-    </div>
 
-    <div class="redirectToLogin">
-      <span>Already have an account? <span class="redirect" routerLink="/sign-in">Log In</span></span>
-    </div>
-  </div>
 
-</div>
+
