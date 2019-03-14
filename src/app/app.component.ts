@@ -12,9 +12,16 @@ export class AppComponent {
 	
 	
   isAuth: boolean;
+  items: any;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) { 
+    
+    
+    
+    
+   }
   ngOnInit() {
     
   }
+  
 }

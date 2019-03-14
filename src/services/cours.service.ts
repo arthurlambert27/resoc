@@ -1,11 +1,22 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { AngularFireDatabase } from '@angular/fire/database';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class CoursService {
   liste_cours = []
+  items: any;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(db: AngularFireDatabase, private httpClient: HttpClient) { 
+    this.items = db.list('cours').valueChanges();
+    this.items.subscribe({
+      next: event => this.getCoursFromServer(),
+      error: err => console.log(`Oops... ${err}`),
+      complete: () => console.log(`Complete!`),
+    })
+
+    
     this.getCoursFromServer()
   }
 

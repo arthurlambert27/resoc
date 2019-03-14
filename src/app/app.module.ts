@@ -10,7 +10,7 @@ import * as firebase from 'firebase/app';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-
+import { AngularFireDatabaseModule } from '@angular/fire/database'
 
 
 
@@ -68,6 +68,7 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireDatabaseModule
     
   ],
   providers: [
