@@ -17,7 +17,7 @@ liste_cours: any[]
   constructor(private coursService: CoursService) { }
 
   ngOnInit() {
-    this.liste_cours = this.coursService.liste_cours;
+    
   }
 
   onSave(){
