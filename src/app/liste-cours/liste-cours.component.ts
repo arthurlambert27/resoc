@@ -8,7 +8,7 @@ import { CoursService } from 'src/services/cours.service';
 })
 export class ListeCoursComponent implements OnInit {
   
-liste_cours: any[]
+
 
 
   
