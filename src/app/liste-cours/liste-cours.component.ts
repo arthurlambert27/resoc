@@ -9,7 +9,7 @@ import {Observable,timer} from 'rxjs';
 })
 export class ListeCoursComponent implements OnInit {
   
-liste_cours: any[]
+
 
 
   
@@ -19,11 +19,7 @@ liste_cours: any[]
 
   ngOnInit() {
 
-   const source=timer(1000 , 5000); 
-   const subscribe=source.subscribe(
-    val=> this.liste_cours = this.coursService.liste_cours
-   );
-       
+    
   }
 
   onSave(){

@@ -10,7 +10,7 @@ import * as firebase from 'firebase/app';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireDatabaseModule } from '@angular/fire/database'
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 
 
@@ -29,6 +29,7 @@ import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { ViewcoursComponent } from './viewcours/viewcours.component';
 
 firebase.initializeApp(environment.firebaseConfig);
 
@@ -42,7 +43,9 @@ const appRoutes: Routes = [
   { path: "signup", component: SignupComponent},
   { path: "signin", component: SigninComponent},
   { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'verify-email-address', component: VerifyEmailComponent }
+  { path: 'verify-email-address', component: VerifyEmailComponent },
+  { path: 'cours/:id', component: ViewcoursComponent },
+
   
 
 ]
@@ -58,7 +61,8 @@ const appRoutes: Routes = [
     SignupComponent,
     SigninComponent,
     ForgotPasswordComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    ViewcoursComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +72,8 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    
     
   ],
   providers: [

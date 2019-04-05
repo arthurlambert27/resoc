@@ -3,11 +3,14 @@
     <div class="col-sm-12">
       <h2>Liste des cours</h2>
       <ul class="list-group">
+         
         <app-cours *ngFor="let cours of coursService.liste_cours"  #Sois jutilise la variable créer dans liste-cours.compoent.ts sois jutilise directement coursService
           [coursTitre]="cours.titre"
           [coursStatus]="cours.status"
           [coursContenu]="cours.contenu"
-          [coursForum]="cours.forum"></app-cours>
+          [coursForum]="cours.forum">
+          </app-cours>
+          
 
           
         

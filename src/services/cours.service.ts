@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 export class CoursService {
   liste_cours = []
   items: any;
-
+  cours: any;
+  
   constructor(db: AngularFireDatabase, private httpClient: HttpClient) { 
     this.items = db.list('cours').valueChanges();
     this.items.subscribe({
@@ -17,7 +18,7 @@ export class CoursService {
     })
 
     
-    this.getCoursFromServer()
+     this.getCoursFromServer()
   }
 
   saveCoursToServer() {
@@ -32,18 +33,37 @@ export class CoursService {
         }
       );
   }
-
+  
+  
   getCoursFromServer() {
-    this.httpClient
+   
+  this.httpClient
       .get<any[]>("https://resoc-1f87d.firebaseio.com/cours.json")
       .subscribe(
         response => {
           this.liste_cours = response;
-          console.log("Chargement terminé!");
+         
         },
         error => {
           console.log("Erreur!: " + error);
+        },()=>{
+          console.log("Chargement terminé!");
+         
         }
+        
       );
   }
+
+  /*
+  getcoursByid (id:number):any {
+    
+    alert('r')
+    alert(JSON.stringify( this.liste_cours[id].titre));
+    return this.liste_cours[id].titre;
+  
+    
+    }
+  */
+
 }
+

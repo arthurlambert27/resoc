@@ -23,7 +23,8 @@ export class CoursComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.coursForum)
+    
+    
   }
   displayForumChat(sujet){
     if (sujet.click){

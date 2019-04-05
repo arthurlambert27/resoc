@@ -1,0 +1,50 @@
+<!-- Avec l'id de l'array
+<div *ngIf="!coursService.liste_cours[+this.id]">
+        <h2> Chargement du cours ou cours inexistant  </h2>
+    </div>
+
+<div *ngIf="coursService.liste_cours[+this.id]">
+    <h2>  {{coursService.liste_cours[+this.id].titre}}  </h2>
+</div>
+
+-->
+
+<!--  Resoudre le problème de l'affichage  -->
+<div *ngFor="let cours of coursService.liste_cours" >
+    <div *ngIf="cours.titre == id">
+            <h1>{{cours.titre}}</h1>
+        <div *ngFor="let contenu of cours.contenu">
+            <div *ngIf="contenu.class === 'titre'">
+                <h3> {{contenu.text}} </h3>
+            </div>
+            <div *ngIf="contenu.class === 'paragraphe'" >
+            <p>{{contenu.text}}</p>
+            </div>
+            
+            <div *ngIf="contenu.class ==='image'">
+                <img [src]="contenu.lien" style="width:300px;height:200px;" alt="">
+              </div>
+              <div *ngIf="contenu.class === 'video'">
+                
+                <video width="250">
+
+                    <source [src]="contenu.lien"/>
+                    
+                
+                    
+                </video>
+                
+
+                
+
+            </div>
+        </div>   
+    </div>
+</div>
+
+
+<a routerLink ="/cours">  retour à la liste   </a>
+
+
+
+
