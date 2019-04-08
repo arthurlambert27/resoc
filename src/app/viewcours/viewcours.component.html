@@ -1,50 +1,105 @@
 <!-- Avec l'id de l'array
-<div *ngIf="!coursService.liste_cours[+this.id]">
-        <h2> Chargement du cours ou cours inexistant  </h2>
-    </div>
+   <div *ngIf="!coursService.liste_cours[+this.id]">
+           <h2> Chargement du cours ou cours inexistant  </h2>
+       </div>
 
-<div *ngIf="coursService.liste_cours[+this.id]">
-    <h2>  {{coursService.liste_cours[+this.id].titre}}  </h2>
-</div>
+   <div *ngIf="coursService.liste_cours[+this.id]">
+       <h2>  {{coursService.liste_cours[+this.id].titre}}  </h2>
+   </div>
 
--->
-
+   -->
 <!--  Resoudre le problème de l'affichage  -->
-<div *ngFor="let cours of coursService.liste_cours" >
-    <div *ngIf="cours.titre == id">
+<div  *ngFor="let cours of coursService.liste_cours" >
+   <div *ngIf="cours.titre == id">
+      <div class="container">
+         <a routerLink ="/cours"><img src="https://cdn.icon-icons.com/icons2/1674/PNG/512/arrowback_111142.png" height="42px" width="42px"/> Retour  </a>
+         <div class="espaceTitre"></div>
+         <div class="row">
+            <div class="col-sm-3 menu">
+               <br>
+               <h3>Cours:</h3>
+               <br>
+               <h4>Sommaire: </h4>
+               <div class="row" (click)="sommaireChange('video')">
+                  <img class="col-sm-3" src="https://static.thenounproject.com/png/10681-200.png" height="30px" width="30px"/>
+                  <h5 class="col-sm-9">Cours Vidéo</h5>
+               </div>
+               <div class="row" (click)="sommaireChange('cours')">
+                  <img class="col-sm-3" src="https://cdn.icon-icons.com/icons2/936/PNG/512/book_icon-icons.com_73655.png" height="30px" width="30px"/>
+                  <h5 class="col-sm-9">Cours Ecrit</h5>
+               </div>
+               <div class="row" (click)="sommaireChange('exercice')">
+                  <img class="col-sm-3" src="https://iotinvent.uk/wp-content/uploads/2018/02/Test-icon.png" height="30px" width="30px"/>
+                  <h5 class="col-sm-9">S'entrainer</h5>
+               </div>
+               <hr width="100%" color="blue">
+               <br>
+               <div class="forum">
+               <h3>Forum:</h3>
+               <br>
+               <div class="topic" *ngFor="let sujet of arrayForum(cours)">
+                <div *ngIf="sujet != null">
+                  <a (click)="displayForumChat(sujet)">
+                  <small class="form-text text-muted">
+
+
+
+                     <span><h5>{{sujet.titre}}</h5> par {{sujet.auteur}} le {{sujet.date.day}}/{{sujet.date.month}}/{{sujet.date.years}} à {{sujet.date.hours}}h</span>
+                    </small>
+                  </a>
+                  <div *ngIf="sujet.click">
+                     <div  *ngFor="let message of arrayMessage(sujet)">
+                        <p > <span style="font-weight:bold">{{message.auteur}}</span>: {{message.message}}</p>
+                     </div>
+                     <div>
+                        <input  [formControl]="message" type="text" class="form-control"  placeholder="Ecrivez votre message ici">
+                        <button class="btn-primary" (click)="envoitMessage(sujet)">Envoyer</button>
+                        </div>
+                        <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     <br>
+                     </div>
+
+
+
+<hr width="100%" color="blue">
+                  </div>
+
+               </div>
+               <div>
+                  <div *ngIf="this.creerNouveauSujet === false" (click)="this.creerNouveauSujet = true"><img src="http://redprovida.com/wp-content/uploads/2017/10/privacy-statement-icon.png" width="40px" height="40px"/>Nouveau sujet
+               </div>
+               <div *ngIf="this.creerNouveauSujet === true">
+                  <h5>Création d'un nouveau sujet:</h5>
+                  <input  [formControl]="titreNewTopic" type="text" class="form-control"  placeholder="Titre du message">
+                  <input  [formControl]="messageNewTopic" type="text" class="form-control"  placeholder="Message...">
+                  <button class="btn-primary" (click)="nouveauTopic(cours)">Créer</button>
+               </div>
+            </div>
+         </div>
+         </div>
+         <div class="col-sm-9">
             <h1>{{cours.titre}}</h1>
-        <div *ngFor="let contenu of cours.contenu">
-            <div *ngIf="contenu.class === 'titre'">
-                <h3> {{contenu.text}} </h3>
+            <div *ngFor="let contenu of cours.contenu">
+               <div *ngIf="this.sommaire_info ==='cours'">
+                  <div *ngIf="contenu.class === 'titre'">
+                     <h3> {{contenu.text}} </h3>
+                  </div>
+                  <div *ngIf="contenu.class === 'paragraphe'" >
+                     <p>{{contenu.text}}</p>
+                  </div>
+                  <div *ngIf="contenu.class ==='image'">
+                     <img [src]="contenu.lien" style="width:300px;height:200px;" alt="">
+                  </div>
+               </div>
             </div>
-            <div *ngIf="contenu.class === 'paragraphe'" >
-            <p>{{contenu.text}}</p>
-            </div>
-            
-            <div *ngIf="contenu.class ==='image'">
-                <img [src]="contenu.lien" style="width:300px;height:200px;" alt="">
-              </div>
-              <div *ngIf="contenu.class === 'video'">
-                
-                <video width="250">
-
-                    <source [src]="contenu.lien"/>
-                    
-                
-                    
-                </video>
-                
-
-                
-
-            </div>
-        </div>   
-    </div>
+         </div>
+      </div>
+   </div>
 </div>
-
-
-<a routerLink ="/cours">  retour à la liste   </a>
-
-
-
-
+</div>

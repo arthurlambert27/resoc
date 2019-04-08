@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { NgModule } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -38,13 +40,13 @@ const appRoutes: Routes = [
   { path: '', component: PresentationComponent},
   { path: 'settings', component: ParametreComponent},
   { path: 'parametre', component: ParametreComponent},
-  { path: "cours", component: ListeCoursComponent},
-  { path: 'dashboard', component: ListeCoursComponent },
+  { path: "cours", component: ListeCoursComponent, data: { animation: 'liste' }},
+  { path: 'dashboard', component: ListeCoursComponent},
   { path: "signup", component: SignupComponent},
   { path: "signin", component: SigninComponent},
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email-address', component: VerifyEmailComponent },
-  { path: 'cours/:id', component: ViewcoursComponent },
+  { path: 'cours/:id', component: ViewcoursComponent,   data: { animation: 'cours' }},
 
   
 
@@ -73,6 +75,7 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
+    BrowserAnimationsModule
     
     
   ],

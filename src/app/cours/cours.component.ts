@@ -10,21 +10,21 @@ import { AuthService } from "src/services/auth.service";
 })
 export class CoursComponent implements OnInit {
 
-  
+
     message = new FormControl('')
-  
+
 
   @Input() coursTitre: string;
   @Input() coursStatus: string;
   @Input() coursContenu: any[];
   @Input() coursForum: any[];
-  constructor(public coursService: CoursService, public authService: AuthService) { 
-    
+  constructor(public coursService: CoursService, public authService: AuthService) {
+
   }
 
   ngOnInit() {
-    
-    
+
+
   }
   displayForumChat(sujet){
     if (sujet.click){
@@ -33,7 +33,7 @@ export class CoursComponent implements OnInit {
     else{
       sujet.click = true;
       }
-    
+
   }
   getColor(){
     if(this.coursStatus === "on"){
@@ -50,7 +50,7 @@ export class CoursComponent implements OnInit {
     else{
       return 'black';
     }
-    
+
   }
   envoitMessage(sujet){
     let user = ""
