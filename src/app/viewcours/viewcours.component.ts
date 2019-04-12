@@ -8,6 +8,7 @@ import { CoursService } from 'src/services/cours.service';
 import { AuthService } from "src/services/auth.service";
 import { FormGroup, FormControl } from '@angular/forms';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-viewcours',
@@ -25,7 +26,7 @@ export class ViewcoursComponent implements OnInit {
   messageNewTopic = new FormControl("")
   creerNouveauSujet = false
 
-  constructor(private route: ActivatedRoute, private coursService: CoursService, public authService: AuthService) {
+  constructor(private route: ActivatedRoute, private coursService: CoursService, public authService: AuthService,  private _sanitizer: DomSanitizer) {
 
 
   }
@@ -36,9 +37,14 @@ export class ViewcoursComponent implements OnInit {
 
   }
 
-  sommaireChange(nom){
+  sommaireChange(nom, cours){
     this.sommaire_info = nom;
     console.log(this.sommaire_info);
+    if(nom === "video"){
+      console.log(cours.video)
+      cours.video = this._sanitizer.bypassSecurityTrustResourceUrl(cours.video);
+      console.log(cours.video)
+    }
   }
 
   displayForumChat(sujet){

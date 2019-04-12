@@ -20,7 +20,7 @@
                <h3>Cours:</h3>
                <br>
                <h4>Sommaire: </h4>
-               <div class="row" (click)="sommaireChange('video')">
+               <div class="row" (click)="sommaireChange('video', cours)">
                   <img class="col-sm-3" src="https://static.thenounproject.com/png/10681-200.png" height="30px" width="30px"/>
                   <h5 class="col-sm-9">Cours Vidéo</h5>
                </div>
@@ -88,16 +88,33 @@
             <div *ngFor="let contenu of cours.contenu">
                <div *ngIf="this.sommaire_info ==='cours'">
                   <div *ngIf="contenu.class === 'titre'">
+                      <br>
+                      <br>
+
                      <h3> {{contenu.text}} </h3>
+                     <br>
+                  </div>
+                  <div *ngIf="contenu.class === 'sous_titre'">
+                    <br>
+                    <h5 style="color:blue;">{{contenu.text}}</h5>
+                    <br>
                   </div>
                   <div *ngIf="contenu.class === 'paragraphe'" >
                      <p>{{contenu.text}}</p>
                   </div>
+                  <div *ngIf="contenu.class ==='important_paragraphe'">
+                    <p style="color:red;">{{contenu.text}}</p>
+                  </div>
                   <div *ngIf="contenu.class ==='image'">
                      <img [src]="contenu.lien" style="width:300px;height:200px;" alt="">
                   </div>
+
                </div>
+
             </div>
+            <div *ngIf="this.sommaire_info === 'video'">
+                     <iframe width="560" height="315" [src]='cours.video' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
          </div>
       </div>
    </div>
