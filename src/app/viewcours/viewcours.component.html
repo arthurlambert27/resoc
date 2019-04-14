@@ -9,6 +9,9 @@
 
    -->
 <!--  Resoudre le problème de l'affichage  -->
+
+
+
 <div  *ngFor="let cours of coursService.liste_cours" >
    <div *ngIf="cours.titre == id">
       <div class="container">
@@ -92,26 +95,54 @@
                       <br>
 
                      <h3> {{contenu.text}} </h3>
+
                      <br>
                   </div>
                   <div *ngIf="contenu.class === 'sous_titre'">
                     <br>
                     <h5 style="color:blue;">{{contenu.text}}</h5>
+
                     <br>
                   </div>
                   <div *ngIf="contenu.class === 'paragraphe'" >
                      <p>{{contenu.text}}</p>
+
                   </div>
                   <div *ngIf="contenu.class ==='important_paragraphe'">
                     <p style="color:red;">{{contenu.text}}</p>
+
+
                   </div>
                   <div *ngIf="contenu.class ==='image'">
                      <img [src]="contenu.lien" style="width:300px;height:200px;" alt="">
+
                   </div>
+                  <div *ngIf="contenu.class ==='html'">
+                     <div [innerHTML]="sanitizeHTML(contenu.text)"></div>
+
+                  </div>
+                  <div *ngIf="contenu.class ==='latex'">
+                        <ng-katex [equation]="contenu.text"></ng-katex>
+                     </div>
+                  <div *ngIf="contenu.class ==='latex-paragraphe'">
+                        <ng-katex-paragraph [paragraph]="contenu.text"></ng-katex-paragraph>
+                  </div>
+                  <div *ngIf="this.authService.admin === true">
+                        <button (click)="suprimerContenu(contenu, cours)">X</button>
+                        <button (click)="ajouterContenu(contenu, cours)">+</button>
+                      </div>
 
                </div>
 
+
             </div>
+
+            <div *ngIf="this.authService.admin === true">
+                  <input  [formControl]="add_class" type="text" class="form-control"  placeholder="Nom de la class">
+                  <input  [formControl]="add_text" type="text" class="form-control"  placeholder="Ecrivez votre message ici">
+                  <button (click)="this.coursService.saveCoursToServer()">Envoyer sur le serveur</button>
+                </div>
+
             <div *ngIf="this.sommaire_info === 'video'">
                      <iframe width="560" height="315" [src]='cours.video' frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   </div>

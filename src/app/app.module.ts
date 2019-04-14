@@ -33,6 +33,9 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { ViewcoursComponent } from './viewcours/viewcours.component';
 
+import { KatexModule } from 'ng-katex';
+
+
 firebase.initializeApp(environment.firebaseConfig);
 
 const appRoutes: Routes = [
@@ -48,7 +51,7 @@ const appRoutes: Routes = [
   { path: 'verify-email-address', component: VerifyEmailComponent },
   { path: 'cours/:id', component: ViewcoursComponent,   data: { animation: 'cours' }},
 
-  
+
 
 ]
 
@@ -75,9 +78,10 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
-    BrowserAnimationsModule
-    
-    
+    BrowserAnimationsModule,
+    KatexModule
+
+
   ],
   providers: [
     AuthService,

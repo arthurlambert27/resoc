@@ -2,18 +2,19 @@
 
 
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CoursService } from 'src/services/cours.service';
 import { AuthService } from "src/services/auth.service";
 import { FormGroup, FormControl } from '@angular/forms';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-viewcours',
   templateUrl: './viewcours.component.html',
-  styleUrls: ['./viewcours.component.css']
+  styleUrls: ['./viewcours.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ViewcoursComponent implements OnInit {
   id: any;
@@ -25,6 +26,9 @@ export class ViewcoursComponent implements OnInit {
   titreNewTopic = new FormControl("")
   messageNewTopic = new FormControl("")
   creerNouveauSujet = false
+  admin = false
+  add_text = new FormControl('')
+  add_class = new FormControl('')
 
   constructor(private route: ActivatedRoute, private coursService: CoursService, public authService: AuthService,  private _sanitizer: DomSanitizer) {
 
@@ -153,6 +157,46 @@ export class ViewcoursComponent implements OnInit {
       array.push(forum.chat[message])
     }
     return array
+  }
+
+  suprimerContenu(contenu, cours){
+
+    let array = [];
+    for(let cour in cours.contenu){
+      if(cours.contenu[cour] != contenu){
+        array.push(cours.contenu[cour])
+      }
+
+    }
+    cours.contenu = array
+    console.log(cours.contenu)
+
+
+
+  }
+
+  ajouterContenu(contenu, cours){
+    let contenuAjoute = {
+      class: this.add_class.value,
+      text: this.add_text.value
+    }
+    let array=[];
+    for(let cour in cours.contenu){
+      if(cours.contenu[cour] != contenu){
+        array.push(cours.contenu[cour])
+      }
+      else{
+        array.push(cours.contenu[cour]);
+        array.push(contenuAjoute);
+      }
+    }
+    cours.contenu = array
+    console.log(cours.contenu)
+
+  }
+
+  sanitizeHTML(unsafeStyle: string): SafeStyle {
+    return this._sanitizer.bypassSecurityTrustHtml(unsafeStyle);
   }
 
 }
