@@ -3,28 +3,22 @@
     <div class="col-sm-12">
       <h2>Liste des cours</h2>
       <ul class="list-group">
-         
+
         <app-cours *ngFor="let cours of coursService.liste_cours"  #Sois jutilise la variable créer dans liste-cours.compoent.ts sois jutilise directement coursService
+          [description] = "cours.description"
+          [image] = "cours.img"
           [coursTitre]="cours.titre"
           [coursStatus]="cours.status"
           [coursContenu]="cours.contenu"
           [coursForum]="cours.forum">
           </app-cours>
-          
 
-          
-        
+
+
+
       </ul>
     </div>
-    <button class="btn btn-primary" (click)="onSave()">Enregistrer les cours</button>
-
-<button class="btn btn-primary" (click)="onFetch()">Recupérer les cours sur la bdd</button>
   </div>
 
 
 </div>
-
-
-
-
-

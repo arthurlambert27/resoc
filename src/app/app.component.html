@@ -7,18 +7,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-        <li routerLinkActive="active" class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="accueil"><h3>Accueil</h3></a>
-        </li>
         <li  class="nav-item test">
           <a class="nav-link" routerLinkActive="active" routerLink="cours"><h3>Tout les cours</h3></a>
         </li>
       </ul>
-      
-      
-      
+
+
+
           <div>
-              
+
            <a class="nav-link" routerLinkActive="active" routerLink="signup" *ngIf="!authService.userData"><h3>Créer un compte</h3></a>
            <a class="nav-link" routerLinkActive="active" routerLink="signin" *ngIf="!authService.userData"><h3>Se connecter</h3></a>
            <a (click)="authService.SignOut()"
@@ -28,19 +25,15 @@
            <a routerLink="parametre"
            *ngIf="authService.userData"><h3>Parametre</h3></a>
           </div>
-          
+
         </div>
-      
-        
+
+
 </nav>
 </div>
 </div>
-  
+
 
 <div [@routerAnimation]="getRouteAnimation(route)">
   <router-outlet #route="outlet"></router-outlet>
 </div>
-
-
-
-

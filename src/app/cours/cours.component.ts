@@ -13,7 +13,8 @@ export class CoursComponent implements OnInit {
 
     message = new FormControl('')
 
-
+  @Input() description: string;
+  @Input() image: string;
   @Input() coursTitre: string;
   @Input() coursStatus: string;
   @Input() coursContenu: any[];
