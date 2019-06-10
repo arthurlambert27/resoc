@@ -12,7 +12,7 @@ Lien vers le diaporama utilisé pour la présentation: https://docs.google.com/p
 -Installer le cli d'angular
 -Dans le dossier du projet, lancer `npm install` pour installer les dépendances
 
-### Lancer le serveur
+## Lancer le serveur
 
 Lancer `ng serve` pour ouvrir le serveur. Lien: `http://localhost:4200/`. 
 
